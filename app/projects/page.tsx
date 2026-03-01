@@ -39,8 +39,8 @@ const projectFiles = [
     desc: "My personal portfolio website built with Next.js and Tailwind CSS. Created also to showcase my skillset in modern Frontend Development. Features responsive layouts, interactive elements, while maintaining a clean and accessible design.",
     tech: ["React", "Next.js", "Tailwind CSS"],
     icon: <SiReact size={24} className="text-[#A3F9B9]" />,
-    github: "#",
-    live: "#"
+    github: "https://github.com/Abrar-Quadri26710/AbrarPersonalWebsitePortfolio",
+    live: "#https://github.com/Abrar-Quadri26710/AbrarPersonalWebsitePortfolio"
   },
   {
     id: "P-04",

@@ -322,7 +322,7 @@ export default function Home() {
                     Designing <span className="font-bold text-white border-b-2 border-[#89dbca]">Modern</span> and Resilient Programs.
                   </h3>
                   <p className="text-gray-400 text-base md:text-lg leading-relaxed">
-                    Specializing in modern fullstack software developement while expanding my aresenal of skills in networking, cybersecurity, and AI. Passionate about building secure, efficient, and scalable systems for the people.
+                    Specializing in modern software development while expanding my arsenal of skills in networking, cybersecurity, and AI. Passionate about building secure, efficient, and scalable systems for the people.
                   </p>
                 </div>
               </FadeIn>
@@ -382,7 +382,7 @@ export default function Home() {
                   <span className="text-[10px] md:text-xs font-mono text-[#0a0a0a] bg-[#89dbca] px-4 py-2 font-bold tracking-widest uppercase group-hover:bg-[#d4af37] transition-colors self-start">C#</span>
                 </div>
                 <p className="text-gray-400 text-sm md:text-lg leading-relaxed max-w-4xl">
-                  CURRENTLY working on a virtual OS that simulates concepts such as process scheduling, virtual memory, memory management, and inter-process synchronization — all running on an abstract CPU with a custom instruction set. 
+                  Now finieshed with a virtual OS that simulates concepts such as process scheduling, virtual memory, memory management, and inter-process synchronization, all running on an abstract CPU with a custom instruction set. See more details in the projects!
                 </p>
               </div>
             </FadeIn>

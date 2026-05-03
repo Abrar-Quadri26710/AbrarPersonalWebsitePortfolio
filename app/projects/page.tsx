@@ -23,9 +23,9 @@ const projectFiles = [
   {
     id: "P-02",
     title: "MID OS",
-    status: "PROTOTYPING",
-    statusColor: "text-[#F5D15F]", 
-    desc: "MidOS is a virtual operating system, written in C#. The project simulates core OS concepts — process scheduling, virtual memory, memory management, and inter-process synchronization. It all running on an abstract CPU with a custom instruction set. I'm currently still working on it, advice is welcome.",
+    status: "DEPLOYED",
+    statusColor: "text-[#A3F9B9]", 
+    desc: "MidOS is a rudimentary virtual OS built from scratch. It implements process scheduling, virtual memory with LRU page eviction, mutex/event synchronization, and dynamic heap allocation. It's designed with a Fetch Decode Execute that can work with many types of instructions with context switching, priority-based scheduling, and priority inversion handling. To top it all off, it's built a two-level memory system with page table address translation, page boundary-safe integer reads, LRU eviction, dirty bit write-back optimization, and simulated disk swap ",
     tech: ["Computer Architecture", "Memory Management", "C#"],
     icon: <FaFolderOpen size={24} className="text-[#F5D15F]" />,
     github: "https://github.com/Abrar-Quadri26710/MidOS",

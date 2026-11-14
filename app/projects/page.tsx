@@ -1,49 +1,75 @@
 "use client";
 
 import { useState } from 'react';
-import { SiLinux, SiGithub, SiReact, SiTailwindcss, SiCplusplus, SiSqlite } from 'react-icons/si';
-import { FaEnvelope, FaLinkedin, FaExternalLinkAlt, FaFolderOpen, FaCoffee, FaBars, FaTimes, FaChessRook } from 'react-icons/fa';
+import Navbar from "@/components/Navbar";
+import { SiLinux, SiGithub, SiReact, SiTailwindcss, SiCplusplus, SiSqlite, SiTypescript } from 'react-icons/si';
+import { FaEnvelope, FaLinkedin, FaExternalLinkAlt, FaFolderOpen, FaVideo, FaLock } from 'react-icons/fa';
 import { TbBrandCSharp, TbBrandNextjs } from 'react-icons/tb';
 
-// ============================================================================
-// 🚀 TACTICAL PROJECT DATABANK 🚀
-// ============================================================================
-const projectFiles = [
+// --- PROJECT ARCHIVE ---
+interface ProjectItem {
+  id: string;
+  title: string;
+  status: string;
+  statusColor: string;
+  desc: string;
+  tech: string[];
+  icon: React.ReactNode;
+  github?: string;
+  live?: string;
+  isProprietary?: boolean;
+  videoNotice?: string;
+  demoUrl?: string;
+}
+
+const projectFiles: ProjectItem[] = [
   {
     id: "P-01",
-    title: "RV32I Virtual CPU",
-    status: "DEPLOYED",
-    statusColor: "text-[#A3F9B9]", // Gold for in progress
-    desc: "A custom-engineered Virtual CPU built from the ground up. Translates complex hardware-level execution cycles into functional, object-oriented software logic, including memory management, instruction parsing, and loader classes. This project bridges the gap between raw hardware architecture and high-level software engineering.",
-    tech: ["C++", "System Architecture", "Emulation"],
-    icon: <TbBrandCSharp size={24} className="text-[#A3F9B9]" />,
-    github: "https://github.com/Abrar-Quadri26710/RV32I-CPU-Simulator",
-    live: "https://github.com/Abrar-Quadri26710/RV32I-CPU-Simulator"
+    title: "Bubbles Social Platform",
+    status: "ACTIVE BUILD",
+    statusColor: "text-teal-400",
+    desc: "A web-based alternative to engagement-driven social networks. Conversations are organized into Fields, Spaces (single-field communities), and Clouds (multi-field communities with 100-member scaling transitions). Discarding endless algorithmic feeds, Bubbles organizes discussions by topic with stance tags (Open, Support, Challenge, Curious), creator-defined lifecycles (1hr to 7 days), and temporary local JSON discussion archive exports. Built with Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS, Prisma ORM, and HMAC session authentication.",
+    tech: ["Next.js 16", "React 19", "TypeScript", "Prisma ORM", "Tailwind CSS", "HMAC Auth"],
+    icon: <SiReact size={24} className="text-teal-400" />,
+    isProprietary: true,
+    videoNotice: "Video feature showcase coming soon",
+    demoUrl: "mailto:mirrowdin@gmail.com?subject=Inquiry%20regarding%20Bubbles%20Social%20Platform"
   },
   {
     id: "P-02",
-    title: "MID OS",
+    title: "MID OS Virtual Operating System",
     status: "DEPLOYED",
     statusColor: "text-[#A3F9B9]", 
-    desc: "MidOS is a rudimentary virtual OS built from scratch. It implements process scheduling, virtual memory with LRU page eviction, mutex/event synchronization, and dynamic heap allocation. It's designed with a Fetch Decode Execute that can work with many types of instructions with context switching, priority-based scheduling, and priority inversion handling. To top it all off, it's built a two-level memory system with page table address translation, page boundary-safe integer reads, LRU eviction, dirty bit write-back optimization, and simulated disk swap ",
-    tech: ["Computer Architecture", "Memory Management", "C#"],
-    icon: <FaFolderOpen size={24} className="text-[#F5D15F]" />,
+    desc: "MidOS is a virtual operating system built from scratch to explore system-level process scheduling and execution isolation. It implements cooperative and preemptive process scheduling with context switching, virtual memory management with two-level page tables and LRU page eviction, mutex/event synchronization, and dynamic heap allocation. Connects operating system isolation concepts directly to security and execution boundaries.",
+    tech: ["C#", "Virtual Memory", "Process Scheduling", "Concurrency"],
+    icon: <TbBrandCSharp size={24} className="text-[#F5D15F]" />,
     github: "https://github.com/Abrar-Quadri26710/MidOS",
     live: "https://github.com/Abrar-Quadri26710/MidOS"
   },
   {
     id: "P-03",
-    title: "Abrar's Portfolio Website",
+    title: "Storefront E-Commerce Website",
     status: "DEPLOYED",
-    statusColor: "text-[#A3F9B9]", // Green for complete
-    desc: "My personal portfolio website built with Next.js and Tailwind CSS. Created also to showcase my skillset in modern Frontend Development. Features responsive layouts, interactive elements, while maintaining a clean and accessible design.",
-    tech: ["React", "Next.js", "Tailwind CSS"],
-    icon: <SiReact size={24} className="text-[#A3F9B9]" />,
-    github: "https://github.com/Abrar-Quadri26710/AbrarPersonalWebsitePortfolio",
-    live: "#https://github.com/Abrar-Quadri26710/AbrarPersonalWebsitePortfolio"
+    statusColor: "text-[#A3F9B9]",
+    desc: "An e-commerce website for a fictional retail store, engineered with PHP and MySQL. Built to reinforce backend development, session security, and database normalization. Features a custom shopping cart, role-based access control (RBAC), an admin dashboard for managing products and orders, and a 3NF normalized relational schema preventing data anomalies.",
+    tech: ["PHP", "MySQL", "RBAC", "Session Security", "Schema Design"],
+    icon: <SiSqlite size={24} className="text-[#A3F9B9]" />,
+    github: "https://github.com/Abrar-Quadri26710/StoreFrontWebsite",
+    live: "https://github.com/Abrar-Quadri26710/StoreFrontWebsite"
   },
   {
     id: "P-04",
+    title: "RV32I Virtual CPU",
+    status: "DEPLOYED",
+    statusColor: "text-[#A3F9B9]",
+    desc: "A custom-engineered 32-bit RISC-V CPU simulator capable of decoding and executing raw binary machine code. Translates hardware-level execution cycles into functional, object-oriented software logic, including memory management, instruction parsing, and loader classes. Features a 32-entry register bank and byte-addressable memory hierarchy.",
+    tech: ["C++", "System Architecture", "RISC-V Emulation"],
+    icon: <SiCplusplus size={24} className="text-[#A3F9B9]" />,
+    github: "https://github.com/Abrar-Quadri26710/RV32I-CPU-Simulator",
+    live: "https://github.com/Abrar-Quadri26710/RV32I-CPU-Simulator"
+  },
+  {
+    id: "P-05",
     title: "Assembler Payroll System",
     status: "DEPLOYED",
     statusColor: "text-[#A3F9B9]",
@@ -53,28 +79,23 @@ const projectFiles = [
     github: "https://github.com/Abrar-Quadri26710/AssemblerPayrollSupport",
     live: "https://github.com/Abrar-Quadri26710/AssemblerPayrollSupport"
   },
-    {
-    id: "P-05",
-    title: "Storefront E-commerce Website",
+  {
+    id: "P-06",
+    title: "Abrar's Engineering Portfolio",
     status: "DEPLOYED",
     statusColor: "text-[#A3F9B9]",
-    desc: "An e-commerce website for a fictional retail store, built with PHP and MySQL. The project serves to reinforce my Backend Development skills, featuring a custom-built shopping cart, user authentication system, and an admin dashboard for managing products and orders. The database is designed with efficient normalization to make sure integrity is maintained",
-    tech: ["PHP", "SQL", "Database Design"],
-    icon: <SiSqlite size={24} className="text-[#A3F9B9]" />,
-    github: "https://github.com/Abrar-Quadri26710/StoreFrontWebsite",
-    live: "https://github.com/Abrar-Quadri26710/StoreFrontWebsite"
+    desc: "Personal portfolio website built with Next.js 16 and Tailwind CSS. Features spatial flight navigation across a 3600px tactical canvas, responsive holographic helmet visor HUD menus, bit-scrambling text animations, and an opening tactical intro.",
+    tech: ["Next.js 16", "React 19", "Tailwind CSS", "TypeScript"],
+    icon: <TbBrandNextjs size={24} className="text-[#A3F9B9]" />,
+    github: "https://github.com/Abrar-Quadri26710/AbrarPersonalWebsitePortfolio",
+    live: "https://github.com/Abrar-Quadri26710/AbrarPersonalWebsitePortfolio"
   },
 ];
 
 export default function Projects() {
-  // Memory state to track which project card is currently expanded
   const [expandedId, setExpandedId] = useState<string | null>(null);
-  
-  // Mobile Nav State
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const handleCardClick = (id: string) => {
-    // If clicking the already expanded card, close it. Otherwise, open the new one.
     setExpandedId(prev => prev === id ? null : id);
   };
 
@@ -117,66 +138,24 @@ export default function Projects() {
       <div className="fixed inset-0 hex-grid-bg pointer-events-none"></div>
       <div className="fixed inset-0 z-0 pointer-events-none shadow-[inset_0_0_150px_rgba(0,0,0,0.95)]"></div>
 
-      {/* --- HUD NAVIGATION (MOBILE OPTIMIZED) --- */}
-      <nav className="fixed top-0 w-full z-50 border-b border-[#222222] bg-[#050505]/90 backdrop-blur-md pointer-events-auto">
-        <div className="max-w-7xl mx-auto px-5 md:px-16 h-20 flex items-center justify-between">
-          <a href="/" className="text-white font-bold tracking-widest text-sm uppercase flex items-center gap-3 hover:text-[#89dbca] transition-colors cursor-crosshair relative z-50">
-            <FaChessRook className="text-[#89dbca]" size={20} /> A. Quadri
-          </a>
-          
-          <div className="hidden md:flex gap-10 text-xs font-bold tracking-widest uppercase text-gray-500">
-            <a href="/" className="hover:text-white transition-colors cursor-crosshair">Profile</a>
-            <a href="/about" className="hover:text-white transition-colors cursor-crosshair">About</a>
-            <a href="/projects" className="text-[#89dbca] drop-shadow-[0_0_8px_#89dbca] transition-colors cursor-crosshair">Projects</a>
-            <a href="/relax" className="hover:text-white transition-colors cursor-crosshair flex items-center gap-2">
-              <FaCoffee size={12} /> Relax
-            </a>
-          </div>
-          
-          <div className="flex items-center gap-4 md:gap-6 text-gray-400 relative z-50">
-            <a href="https://github.com/Abrar-Quadri26710" target="_blank" rel="noreferrer" className="hidden sm:block hover:text-white transition-colors cursor-crosshair"><SiGithub size={18} /></a>
-            <a href="https://www.linkedin.com/in/abrar-quadri-03b946317/" target="_blank" rel="noreferrer" className="hidden sm:block hover:text-white transition-colors cursor-crosshair"><FaLinkedin size={18} /></a>
-            <a href="mailto:mirrowdin@gmail.com" className="hidden sm:block hover:text-white transition-colors cursor-crosshair"><FaEnvelope size={18} /></a>
-            
-            <button 
-              className="md:hidden text-gray-400 hover:text-white transition-colors ml-2 cursor-crosshair"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            >
-              {mobileMenuOpen ? <FaTimes size={22} /> : <FaBars size={22} />}
-            </button>
-          </div>
-        </div>
-
-        <div className={`md:hidden absolute top-20 left-0 w-full bg-[#050505]/95 backdrop-blur-xl border-b border-[#222222] transition-all duration-300 overflow-hidden ${mobileMenuOpen ? "max-h-64 opacity-100" : "max-h-0 opacity-0 border-transparent"}`}>
-          <div className="flex flex-col items-center py-6 gap-6 text-xs font-bold tracking-widest uppercase text-gray-500">
-            <a href="/" className="hover:text-white transition-colors">Profile</a>
-            <a href="/about" className="hover:text-white transition-colors">About</a>
-            <a href="/projects" className="text-[#89dbca] transition-colors">Projects</a>
-            <a href="/relax" className="hover:text-white transition-colors flex items-center gap-2"><FaCoffee size={12} /> Relax</a>
-            <div className="flex gap-6 mt-2 pt-4 border-t border-[#222] w-1/2 justify-center">
-               <a href="https://github.com" target="_blank" rel="noreferrer"><SiGithub size={18} className="hover:text-white" /></a>
-               <a href="https://linkedin.com" target="_blank" rel="noreferrer"><FaLinkedin size={18} className="hover:text-white" /></a>
-               <a href="mailto:mirrowdin@gmail.com"><FaEnvelope size={18} className="hover:text-white" /></a>
-            </div>
-          </div>
-        </div>
-      </nav>
+      {/* Navigation */}
+      <Navbar />
 
       {/* --- PAGE HEADER --- */}
       <div className="relative z-10 pt-32 px-5 md:px-16 max-w-7xl mx-auto animate-fade-in">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 border-b border-[#222] pb-6">
           <div>
-            <h2 className="text-[#89dbca] text-[10px] md:text-xs font-bold tracking-widest uppercase mb-2 drop-shadow-[0_0_5px_#89dbca] flex items-center gap-2">
+            <h2 className="text-[#89dbca] text-[10px] md:text-xs font-bold tracking-widest uppercase mb-2 flex items-center gap-2">
                <span className="w-2 h-2 bg-[#89dbca] rounded-full animate-pulse"></span>
                Deployment Logs
             </h2>
-            <h1 className="text-3xl md:text-5xl font-black tracking-tighter leading-[0.85] text-white uppercase drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]">
-              Project <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#89dbca] to-[#87e8c1]">History</span>
+            <h1 className="text-3xl md:text-5xl font-black tracking-tighter leading-[0.85] text-white uppercase">
+              Project History
             </h1>
           </div>
-          <div className="mt-4 md:mt-0 bg-[#111]/80 backdrop-blur border border-[#89dbca]/30 p-2 md:p-3 rounded-lg flex items-center gap-4 w-full md:w-auto justify-between md:justify-start">
-            <span className="text-[10px] md:text-[10px] text-gray-500 font-mono tracking-widest uppercase">Total Logs:</span>
-            <span className="text-[#89dbca] font-black text-lg md:text-xl leading-none drop-shadow-[0_0_5px_#89dbca]">0{projectFiles.length}</span>
+          <div className="mt-4 md:mt-0 bg-[#111] border border-neutral-800 p-2 md:p-3 rounded-lg flex items-center gap-4 w-full md:w-auto justify-between md:justify-start">
+            <span className="text-[10px] text-gray-500 font-mono tracking-widest uppercase">Total Logs:</span>
+            <span className="text-[#89dbca] font-black text-lg md:text-xl leading-none">0{projectFiles.length}</span>
           </div>
         </div>
 
@@ -212,7 +191,6 @@ export default function Projects() {
                   {/* Header: Icon & Status */}
                   <div className="flex justify-between items-start mb-5 md:mb-6">
                     <div className={`w-10 h-10 md:w-12 md:h-12 rounded border flex items-center justify-center transition-colors duration-300 ${isExpanded ? 'bg-[#89dbca]/10 border-[#89dbca]' : 'bg-[#111] border-[#333] group-hover:border-[#89dbca]/50'}`}>
-                      {/* Slightly shrink the icon for mobile via scaling */}
                       <div className="scale-75 md:scale-100">{project.icon}</div>
                     </div>
                     <div className="text-right">
@@ -233,6 +211,13 @@ export default function Projects() {
                       {project.desc}
                     </p>
 
+                    {project.isProprietary && (
+                      <div className="mt-3 py-1 px-2.5 bg-neutral-900/80 border border-teal-500/30 rounded text-[10px] font-mono text-teal-300 flex items-center gap-1.5">
+                        <FaLock size={9} />
+                        <span>Proprietary Codebase // Potential Product Release</span>
+                      </div>
+                    )}
+
                     <div className="mt-3">
                       <span className={`text-[9px] md:text-[10px] font-bold tracking-widest uppercase transition-colors duration-300 ${isExpanded ? 'text-[#F5D15F]' : 'text-gray-600 group-hover:text-[#89dbca]'}`}>
                         {isExpanded ? '[-] MINIMIZE LOG' : '[+] EXPAND DATA'}
@@ -249,13 +234,56 @@ export default function Projects() {
                         </span>
                       ))}
                     </div>
-                    <div className="flex gap-3 self-end sm:self-auto">
-                      <a href={project.github} onClick={(e) => e.stopPropagation()} target="_blank" rel="noreferrer" className="text-gray-500 hover:text-white transition-colors cursor-crosshair p-2 bg-[#111] rounded border border-[#333] hover:border-white z-20 relative">
-                        <SiGithub size={12} className="md:w-3.5 md:h-3.5" />
-                      </a>
-                      <a href={project.live} onClick={(e) => e.stopPropagation()} target="_blank" rel="noreferrer" className="text-gray-500 hover:text-[#89dbca] transition-colors cursor-crosshair p-2 bg-[#111] rounded border border-[#333] hover:border-[#89dbca] z-20 relative">
-                        <FaExternalLinkAlt size={12} className="md:w-3.5 md:h-3.5" />
-                      </a>
+                    
+                    <div className="flex items-center gap-3 self-end sm:self-auto">
+                      {project.isProprietary ? (
+                        <div className="flex items-center gap-2">
+                          <span
+                            title="Video showcase coming soon"
+                            className="inline-flex items-center gap-1 text-[10px] font-mono text-teal-300 bg-[#111] px-2.5 py-1.5 rounded border border-teal-500/40"
+                          >
+                            <FaVideo size={11} />
+                            <span className="hidden sm:inline">Showcase Soon</span>
+                          </span>
+                          {project.demoUrl && (
+                            <a
+                              href={project.demoUrl}
+                              onClick={(e) => e.stopPropagation()}
+                              title="Inquire about Bubbles demo"
+                              className="text-gray-400 hover:text-[#89dbca] transition-colors p-2 bg-[#111] rounded border border-[#333] hover:border-[#89dbca] z-20 relative"
+                            >
+                              <FaExternalLinkAlt size={12} className="md:w-3.5 md:h-3.5" />
+                            </a>
+                          )}
+                        </div>
+                      ) : (
+                        <>
+                          {project.github && (
+                            <a
+                              href={project.github}
+                              onClick={(e) => e.stopPropagation()}
+                              target="_blank"
+                              rel="noreferrer"
+                              title="GitHub Repository"
+                              className="text-gray-500 hover:text-white transition-colors cursor-crosshair p-2 bg-[#111] rounded border border-[#333] hover:border-white z-20 relative"
+                            >
+                              <SiGithub size={12} className="md:w-3.5 md:h-3.5" />
+                            </a>
+                          )}
+                          {project.live && (
+                            <a
+                              href={project.live}
+                              onClick={(e) => e.stopPropagation()}
+                              target="_blank"
+                              rel="noreferrer"
+                              title="Live / Source Link"
+                              className="text-gray-500 hover:text-[#89dbca] transition-colors cursor-crosshair p-2 bg-[#111] rounded border border-[#333] hover:border-[#89dbca] z-20 relative"
+                            >
+                              <FaExternalLinkAlt size={12} className="md:w-3.5 md:h-3.5" />
+                            </a>
+                          )}
+                        </>
+                      )}
                     </div>
                   </div>
 

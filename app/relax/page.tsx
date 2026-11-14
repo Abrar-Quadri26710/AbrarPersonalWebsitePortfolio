@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from 'react';
+import Navbar from "@/components/Navbar";
 import { SiLinux, SiGithub } from 'react-icons/si';
 import { FaEnvelope, FaLinkedin, FaCoffee, FaPlay, FaVolumeUp, FaVolumeMute, FaBars, FaTimes, FaChessRook } from 'react-icons/fa';
 
@@ -125,47 +126,8 @@ export default function Relax() {
       <div className="absolute inset-0 z-0 pointer-events-none" style={{ backgroundImage: 'radial-gradient(#FFD59E 1px, transparent 1px)', backgroundSize: '100px 100px', opacity: isCozyMode ? 0.25 : 0, transition: 'opacity 4s ease-in-out' }}></div>
 
     
-      <nav 
-        className="absolute top-0 w-full z-50 border-b transition-colors duration-[4000ms] backdrop-blur-md pointer-events-auto"
-        style={{ backgroundColor: isCozyMode ? 'rgba(38, 14, 4, 0.6)' : 'rgba(5, 5, 5, 0.6)', borderColor: isCozyMode ? 'rgba(140, 58, 21, 0.3)' : 'rgba(34, 34, 34, 1)' }}
-      >
-        <div className="max-w-7xl mx-auto px-5 md:px-16 h-20 flex items-center justify-between">
-          <a href="/" className={`font-bold tracking-widest text-sm uppercase flex items-center gap-3 transition-colors cursor-crosshair relative z-50 ${isCozyMode ? 'text-[#FFD59E] hover:text-white' : 'text-white hover:text-[#F5D15F]'}`}>
-            <FaChessRook className={`transition-colors duration-[4000ms] ${hostessColor}`} size={20} /> A. Quadri
-          </a>
-          
-          <div className="hidden md:flex gap-10 text-xs font-bold tracking-widest uppercase text-gray-500">
-            <a href="/" className="hover:text-white transition-colors cursor-crosshair">Profile</a>
-            <a href="/about" className="hover:text-white transition-colors cursor-crosshair">About</a>
-            <a href="/projects" className="hover:text-white transition-colors cursor-crosshair">Projects</a>
-            <a href="/relax" className={`transition-all duration-[4000ms] cursor-crosshair flex items-center gap-2 ${guestColor}`} style={{ filter: isCozyMode ? 'drop-shadow(0 0 8px #FFD59E)' : 'drop-shadow(0 0 8px #F5D15F)' }}>
-              <FaCoffee size={12} /> Relax
-            </a>
-          </div>
-          
-          <div className="flex items-center gap-4 md:gap-6 text-gray-400 relative z-50">
-            <button onClick={toggleMusic} className={`mr-2 md:mr-4 transition-all duration-1000 cursor-crosshair ${isMusicPlaying ? hostessColor : 'text-gray-600 hover:text-gray-400'}`} style={{ filter: isMusicPlaying ? (isCozyMode ? 'drop-shadow(0 0 8px #FFD59E)' : 'drop-shadow(0 0 8px #A3F9B9)') : 'none' }} title={isMusicPlaying ? "Mute Ambience" : "Play Ambience"}>
-              {isMusicPlaying ? <FaVolumeUp size={18} /> : <FaVolumeMute size={18} />}
-            </button>
-            <div className={`w-[1px] h-4 mr-1 md:mr-2 transition-colors duration-[4000ms]`} style={{ backgroundColor: isCozyMode ? 'rgba(140, 58, 21, 0.5)' : '#333' }}></div>
-            <a href="https://github.com/Abrar-Quadri26710" target="_blank" rel="noreferrer" className="hidden sm:block hover:text-white transition-colors cursor-crosshair"><SiGithub size={18} /></a>
-            <a href="https://www.linkedin.com/in/abrar-quadri-03b946317/" target="_blank" rel="noreferrer" className="hidden sm:block hover:text-white transition-colors cursor-crosshair"><FaLinkedin size={18} /></a>
-            <a href="mailto:mirrowdin@gmail.com" className="hidden sm:block hover:text-white transition-colors cursor-crosshair"><FaEnvelope size={18} /></a>
-            <button className="md:hidden text-gray-400 hover:text-white transition-colors ml-2 cursor-crosshair" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
-              {mobileMenuOpen ? <FaTimes size={22} /> : <FaBars size={22} />}
-            </button>
-          </div>
-        </div>
-
-        <div className={`md:hidden absolute top-20 left-0 w-full backdrop-blur-xl border-b transition-all duration-[4000ms] overflow-hidden ${mobileMenuOpen ? "max-h-64 opacity-100" : "max-h-0 opacity-0 border-transparent"}`} style={{ backgroundColor: isCozyMode ? 'rgba(38, 14, 4, 0.95)' : 'rgba(5, 5, 5, 0.95)', borderColor: isCozyMode ? 'rgba(140, 58, 21, 0.3)' : 'rgba(34, 34, 34, 1)' }}>
-          <div className="flex flex-col items-center py-6 gap-6 text-xs font-bold tracking-widest uppercase text-gray-500">
-            <a href="/" className="hover:text-white transition-colors">Profile</a>
-            <a href="/about" className="hover:text-white transition-colors">About</a>
-            <a href="/projects" className="hover:text-white transition-colors">Projects</a>
-            <a href="/relax" className={`${guestColor} transition-colors flex items-center gap-2`}><FaCoffee size={12} /> Relax</a>
-          </div>
-        </div>
-      </nav>
+      {/* Navigation */}
+      <Navbar />
 
       {/* ORB */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 flex flex-col items-center pointer-events-none scale-75 md:scale-100 mt-10 md:mt-0">

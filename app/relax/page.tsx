@@ -32,7 +32,6 @@ export default function Relax() {
   
   const [isMusicPlaying, setIsMusicPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isCozyMode, setIsCozyMode] = useState(false);
 
   // Typing Effect

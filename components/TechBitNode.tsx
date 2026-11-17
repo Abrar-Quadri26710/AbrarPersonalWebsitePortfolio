@@ -50,7 +50,7 @@ export default function TechBitNode({
 
   return (
     <div
-      className={`relative p-3.5 border transition-all duration-500 overflow-hidden ${
+      className={`relative p-1.5 sm:p-3 border transition-all duration-500 overflow-hidden ${
         stage === "locked"
           ? "border-neutral-800 bg-neutral-950/70 hover:border-teal-500/70"
           : stage === "forming"
@@ -59,25 +59,25 @@ export default function TechBitNode({
       }`}
     >
       {/* Corner micro-brackets */}
-      <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-teal-400/50" />
-      <div className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-teal-400/50" />
+      <div className="absolute top-0 right-0 w-1.5 h-1.5 sm:w-2 sm:h-2 border-t border-r border-teal-400/50" />
+      <div className="absolute bottom-0 left-0 w-1.5 h-1.5 sm:w-2 sm:h-2 border-b border-l border-teal-400/50" />
 
       {/* Bit Forming Status */}
       {stage === "forming" && (
-        <div className="absolute top-1 right-2 text-[8px] font-mono text-teal-300 animate-pulse">
+        <div className="absolute top-0.5 right-1.5 text-[7px] sm:text-[8px] font-mono text-teal-300 animate-pulse">
           BIT {bitFragment}
         </div>
       )}
 
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-2 sm:gap-3">
         {icon && (
           <div
-            className={`transition-all duration-300 ${
+            className={`shrink-0 transition-all duration-300 scale-90 sm:scale-100 ${
               stage === "locked"
-                ? "text-teal-400 scale-100"
+                ? "text-teal-400"
                 : stage === "forming"
-                ? "text-teal-200 scale-110 animate-pulse"
-                : "text-neutral-600 scale-90"
+                ? "text-teal-200 animate-pulse"
+                : "text-neutral-600"
             }`}
           >
             {icon}
@@ -85,7 +85,7 @@ export default function TechBitNode({
         )}
         <div className="flex-1 min-w-0">
           <div
-            className={`text-xs sm:text-sm font-semibold transition-colors duration-300 truncate ${
+            className={`text-[11px] sm:text-sm font-semibold transition-colors duration-300 truncate leading-tight ${
               stage === "locked"
                 ? "text-neutral-200"
                 : stage === "forming"
@@ -96,7 +96,7 @@ export default function TechBitNode({
             {stage === "forming" ? `FORMING // ${label}...` : label}
           </div>
           {sublabel && (
-            <div className="text-[10px] font-mono text-neutral-400 truncate mt-0.5">
+            <div className="text-[8px] sm:text-[10px] font-mono text-neutral-400 truncate mt-0.5 leading-tight">
               {sublabel}
             </div>
           )}

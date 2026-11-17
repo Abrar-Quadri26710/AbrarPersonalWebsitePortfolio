@@ -38,8 +38,6 @@ const emberParticles = [
 export default function About() {
   const [activeNode, setActiveNode] = useState(mindNodes[2]); // Starts focused on Node 3 (Cybersecurity & Networks)
   const [isPanelOpen, setIsPanelOpen] = useState(true);
-
-  // 3D Viewport Matrix State
   const [view, setView] = useState({ panX: 0, panY: 0, rotX: 35, rotY: -15, zoom: 1.2 });
   const [isDragging, setIsDragging] = useState(false);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
